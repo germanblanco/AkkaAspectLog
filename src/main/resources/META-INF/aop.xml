@@ -1,0 +1,10 @@
+<aspectj>
+
+    <aspects>
+        <aspect name="gbbaspecttest.AkkaAspectLog"/>
+    </aspects>
+
+    <weaver options="-XnoInline">
+        <include within="gbbaspecttest.*"/>
+    </weaver>
+</aspectj>
