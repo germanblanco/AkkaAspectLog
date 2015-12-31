@@ -10,33 +10,24 @@ import org.aspectj.lang.annotation.Pointcut
 import net.logstash.logback.marker.Markers
 import net.logstash.logback.marker.LogstashMarker
 
-import java.util.Map
-import java.util.HashMap
+import scala.collection.JavaConverters._
 
 @Aspect
 class AkkaAspectLog {
 
-  /*
       @Pointcut(value = "execution ( * "
               + "net.logstash.logback.marker.Markers.appendEntries(..)) "
               + "&& args(map)",
               argNames = "map")
-      public void appendEntriesPointcut(Object map) {}
+      def appendEntriesPointcut(map : java.lang.Object) {}
 
       @Around(value = "appendEntriesPointcut(map)", argNames = "jp,map")
-      public Object appendEntriesHit(ProceedingJoinPoint jp, Object map) throws Throwable {
-          Map m_in = (Map<String, Object>)map;
-          HashMap m_out = new HashMap<String, Object>();
-          m_out.put("new_message", "Hello World!");
-          System.out.println(m_in.values());
-          for (Object entry : m_in.) {
-              System.out.println(entry.getClass());
-          }
-          Object[] array = new Object[]{m_out};
-          return jp.proceed(array);
+      def appendEntriesHit(jp : ProceedingJoinPoint,
+                           map : java.util.Map[java.lang.String, java.lang.Object]) : java.lang.Object = {
+        val out : Array[java.lang.Object] = Array(map)
+        jp.proceed(out)
       }
-  */
-
+/*
     @Pointcut(value = "execution (net.logstash.logback.marker.LogstashMarker "
                                      + "net.logstash.logback.marker.Markers.appendEntries(map)) "
                                      + "&& args(map)",
@@ -63,4 +54,5 @@ class AkkaAspectLog {
     def helloHit() {
       println("Hit hello pointcut.")
     }
+  */
 }
