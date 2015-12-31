@@ -12,12 +12,13 @@ import net.logstash.logback.marker.LogstashMarker;
 public class AkkaAspectLog {
 
     @Pointcut(value = "execution ( * "
-            + "appendEntries(..)) "
-            + " ")
-    public void appendEntriesPointcut() {}
+            + "net.logstash.logback.marker.Markers.appendEntries(..)) "
+            + "&& args(map)",
+            argNames = "map")
+    public void appendEntriesPointcut(Object map) {}
 
-    @Before(value = "appendEntriesPointcut()")
-    public void appendEntriesHit() {
+    @Before(value = "appendEntriesPointcut(map)", argNames = "jp,map")
+    public void appendEntriesHit(JoinPoint jp, Object map) {
         System.out.println("Hit Append Entries pointcut.");
     }
 /*
@@ -31,7 +32,7 @@ public class AkkaAspectLog {
   public void appendEntriesHit(JoinPoint jp, Object map) {
     System.out.println("Hit Append Entries pointcut.");
   }
-*/
+
   @Pointcut(value = "execution (* getLogger(..))")
   public void loggerInfoPointcut() {}
 
@@ -47,4 +48,5 @@ public class AkkaAspectLog {
   public void helloHit() {
     System.out.println("Hit hello pointcut.");
   }
+*/
 }
