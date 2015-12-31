@@ -7,6 +7,6 @@
     <weaver options="-XnoInline">
         <include within="gbbaspecttest.*"/>
         <include within="org.slf4j.*"/>
-        <include within="net.logstash.logback.marker.Markers.*"/>
+        <include within="net.logstash.logback.marker.*"/>
     </weaver>
 </aspectj>
