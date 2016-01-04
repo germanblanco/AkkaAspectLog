@@ -12,6 +12,8 @@ import net.logstash.logback.marker.LogstashMarker
 
 import scala.collection.JavaConverters._
 
+import java.util.HashMap
+
 @Aspect
 class AkkaAspectLog {
 
